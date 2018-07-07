@@ -11,7 +11,11 @@ tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
 }
 
-repositories {       
+jar {
+    manifest.attributes 'Main-Class': 'card.Main'
+}
+
+repositories {
      maven { url "http://repo.maven.apache.org/maven2" }
 }
 
