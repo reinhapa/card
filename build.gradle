@@ -1,5 +1,8 @@
-apply plugin: 'java'
-apply plugin: 'maven'
+plugins {
+  id 'java'
+  id 'maven'
+  id 'com.github.ben-manes.versions' version '0.28.0'
+}
 
 group = 'net.reini'
 version = '0.0.1-SNAPSHOT'
@@ -8,17 +11,31 @@ sourceCompatibility = 9
 targetCompatibility = 9
 
 tasks.withType(JavaCompile) {
-	options.encoding = 'UTF-8'
+  options.encoding = 'UTF-8'
 }
 
 jar {
-    manifest.attributes 'Main-Class': 'card.Main'
+  manifest.attributes 'Main-Class': 'card.Main'
 }
 
 repositories {
-     maven { url "http://repo.maven.apache.org/maven2" }
+  jcenter()
+  mavenLocal()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version:'4.12'
+  testCompile 'junit:junit:4.13'
+}
+
+dependencyUpdates.resolutionStrategy {
+  componentSelection { rules ->
+    rules.all { ComponentSelection selection ->
+      boolean rejected = ['alpha', 'beta', 'rc', 'cr', 'm', 'preview', 'b', 'pr', 'ea'].any { qualifier ->
+        selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-+]*/
+      }
+      if (rejected) {
+        selection.reject('Release candidate')
+      }
+    }
+  }
 }
