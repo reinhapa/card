@@ -2,10 +2,10 @@ package card;
 
 import java.io.ByteArrayOutputStream;
 import java.io.EOFException;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 import javax.smartcardio.Card;
@@ -15,7 +15,7 @@ import javax.smartcardio.CardTerminal;
 import javax.smartcardio.CommandAPDU;
 import javax.smartcardio.ResponseAPDU;
 import javax.smartcardio.TerminalFactory;
-import javax.swing.*;
+import javax.swing.JOptionPane;
 
 /**
  * Requires pcscd -daemon to be running
