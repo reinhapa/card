@@ -21,7 +21,8 @@ import javax.swing.JOptionPane;
  * Requires pcscd -daemon to be running
  */
 public class Main {
-    static CommandAPDU GET_UID = new CommandAPDU(new byte[]{(byte) 0xff, (byte) 0xca, 0x00, 0x00, 0x00});
+  static CommandAPDU GET_UID =
+      new CommandAPDU(new byte[] {(byte) 0xff, (byte) 0xca, 0x00, 0x00, 0x00});
     static CommandAPDU MIFARE_READ_KEYS = new CommandAPDU(new byte[]{(byte) 0xff, (byte) 0x82, (byte) 0x20, (byte) 0x01, (byte) 0x06, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff});
 
     static CommandAPDU authenticateMifareRead(byte readerSlot) {

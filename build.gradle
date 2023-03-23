@@ -1,10 +1,14 @@
 plugins {
-  id 'java-library'
+  id 'application'
+  id 'eclipse'
   id 'com.github.ben-manes.versions' version '0.46.0'
 }
 
 group = 'net.reini'
 version = '0.0.1-SNAPSHOT'
+
+application.mainModule = 'card'
+mainClassName = 'card.Main'
 
 java {
   sourceCompatibility = JavaVersion.VERSION_17
