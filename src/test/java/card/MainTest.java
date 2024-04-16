@@ -14,9 +14,11 @@ import javax.smartcardio.ResponseAPDU;
 import javax.smartcardio.TerminalFactory;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+/**
+ * https://inside.java/tag/jfr
+ */
 class MainTest {
   private byte[] data;
   private String dataString;
@@ -41,7 +43,7 @@ class MainTest {
   }
 
   @Test
-  @Disabled
+//  @Disabled
   void readRfid() throws CardException {
     // show the list of available terminals
     TerminalFactory factory = TerminalFactory.getDefault();
