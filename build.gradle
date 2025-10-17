@@ -1,7 +1,6 @@
 plugins {
   id 'application'
   id 'eclipse'
-  id 'com.github.ben-manes.versions' version '0.53.0'
 }
 
 group = 'net.reini'
@@ -13,7 +12,7 @@ application {
 }
 
 java {
-  sourceCompatibility = JavaVersion.VERSION_21
+  sourceCompatibility = JavaVersion.VERSION_25
 }
 
 tasks.withType(JavaCompile) {
@@ -42,17 +41,4 @@ dependencies {
 
   testRuntimeOnly 'org.junit.platform:junit-platform-runner:1.14.0'
   testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:6.0.0'
-}
-
-dependencyUpdates.resolutionStrategy {
-  componentSelection { rules ->
-    rules.all { ComponentSelection selection ->
-      boolean rejected = ['alpha', 'beta', 'rc', 'cr', 'm', 'preview', 'b', 'pr', 'ea'].any { qualifier ->
-        selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-+]*/
-      }
-      if (rejected) {
-        selection.reject('Release candidate')
-      }
-    }
-  }
 }
