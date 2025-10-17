@@ -7,8 +7,10 @@ plugins {
 group = 'net.reini'
 version = '0.0.1-SNAPSHOT'
 
-application.mainModule = 'card'
-mainClassName = 'card.Main'
+application {
+  mainModule = 'card'
+  mainClass = 'card.Main'
+}
 
 java {
   sourceCompatibility = JavaVersion.VERSION_21
